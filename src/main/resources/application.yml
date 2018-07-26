@@ -1,0 +1,5 @@
+spring:
+  hadoop:
+    fsUri: hdfs://106.15.58.63:9000
+
+
