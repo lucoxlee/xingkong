@@ -95,6 +95,9 @@ public class LaunchConfig {
     private String volumeDriver;
     private String workingDir;
     private String networkLaunchConfig;
+
+    private boolean system;
+
     public void setInstanceTriggeredStop(String instanceTriggeredStop) {
          this.instanceTriggeredStop = instanceTriggeredStop;
      }
@@ -669,4 +672,11 @@ public class LaunchConfig {
          return networkLaunchConfig;
      }
 
+    public boolean isSystem() {
+        return system;
+    }
+
+    public void setSystem(boolean system) {
+        this.system = system;
+    }
 }

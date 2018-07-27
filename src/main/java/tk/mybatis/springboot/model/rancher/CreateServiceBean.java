@@ -32,6 +32,20 @@ public class CreateServiceBean {
     private String uuid;
     private String vip;
     private String fqdn;
+
+    private long createdTS;
+    private int currentScale;
+    private String baseType;
+    private List<String> instanceIds;
+    private Links links;
+    private String id;
+    private String state;
+    private List<PublicEndpoints> publicEndpoints;
+    private String accountId;
+    private boolean system;
+    private String transitioning;
+    private Actions actions;
+
     public void setScale(int scale) {
          this.scale = scale;
      }
@@ -172,4 +186,107 @@ public class CreateServiceBean {
          return fqdn;
      }
 
+    public boolean isAssignServiceIpAddress() {
+        return assignServiceIpAddress;
+    }
+
+    public boolean isStartOnCreate() {
+        return startOnCreate;
+    }
+
+    public long getCreatedTS() {
+        return createdTS;
+    }
+
+    public void setCreatedTS(long createdTS) {
+        this.createdTS = createdTS;
+    }
+
+    public int getCurrentScale() {
+        return currentScale;
+    }
+
+    public void setCurrentScale(int currentScale) {
+        this.currentScale = currentScale;
+    }
+
+    public String getBaseType() {
+        return baseType;
+    }
+
+    public void setBaseType(String baseType) {
+        this.baseType = baseType;
+    }
+
+    public List<String> getInstanceIds() {
+        return instanceIds;
+    }
+
+    public void setInstanceIds(List<String> instanceIds) {
+        this.instanceIds = instanceIds;
+    }
+
+    public Links getLinks() {
+        return links;
+    }
+
+    public void setLinks(Links links) {
+        this.links = links;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public List<PublicEndpoints> getPublicEndpoints() {
+        return publicEndpoints;
+    }
+
+    public void setPublicEndpoints(List<PublicEndpoints> publicEndpoints) {
+        this.publicEndpoints = publicEndpoints;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+
+    public boolean isSystem() {
+        return system;
+    }
+
+    public void setSystem(boolean system) {
+        this.system = system;
+    }
+
+    public String getTransitioning() {
+        return transitioning;
+    }
+
+    public void setTransitioning(String transitioning) {
+        this.transitioning = transitioning;
+    }
+
+    public Actions getActions() {
+        return actions;
+    }
+
+    public void setActions(Actions actions) {
+        this.actions = actions;
+    }
 }
