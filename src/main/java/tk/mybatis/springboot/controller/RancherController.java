@@ -86,7 +86,8 @@ public class RancherController {
 
 
         String result = HttpRequest.post("http://106.15.58.63:8080/v2-beta/projects/1a5/services")
-                .header("Accept", "application/json").header("23B52EF320D702860BC5", "FV7FxAx5rnQ32zDCsAeCpoTaQG3YQZqWJiRhQqVS")
+                .header("23B52EF320D702860BC5", "FV7FxAx5rnQ32zDCsAeCpoTaQG3YQZqWJiRhQqVS")
+                .header("Accept", "application/json")
                 .body(JSONUtil.toJsonPrettyStr(createServiceBean))
                 .timeout(1000000)
                 .execute().body();
