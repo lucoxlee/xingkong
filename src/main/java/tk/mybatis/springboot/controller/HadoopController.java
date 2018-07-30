@@ -79,14 +79,14 @@ public class HadoopController {
     public String makeFile() {
         start = System.currentTimeMillis();
 
-        FileWriter writer = new FileWriter("F:\\hadooptest\\input\\data.txt");
+        FileWriter writer = new FileWriter("/root/data.txt");
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 1000000; i++) {
             stringBuilder.append(JSON.toJSONString(new CityNum("city" + i, "state" + i)) + "\n");
         }
         writer.write(stringBuilder.toString());
         end = System.currentTimeMillis();
-        return "Fileinfo：F:\\hadooptest\\input\\data.txt   执行时间{" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(ms)}";
+        return "Fileinfo：/root/data.txt   time{" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(ms)}";
     }
 
     @RequestMapping("copyFile")
@@ -98,14 +98,14 @@ public class HadoopController {
         //获取文件系统
         FileSystem hdfs = FileSystem.get(conf);
         //文件名称
-        Path src = new Path("F:\\hadooptest\\input\\data.txt");
+        Path src = new Path("/root/data.txt");
         Path dst = new Path("hdfs://106.15.58.63:9000/input");
         if (!hdfs.exists(dst)) {
             hdfs.mkdirs(dst);
         }
         hdfs.copyFromLocalFile(src, dst);
         end = System.currentTimeMillis();
-        return "Upload to " + conf.get("fs.default.name") + "执行时间{" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(ms)}";
+        return "Upload to " + conf.get("fs.default.name") + "time{" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(ms)}";
     }
 
     @RequestMapping("doJob")
@@ -113,7 +113,7 @@ public class HadoopController {
         start = System.currentTimeMillis();
         CityCount.CityCount();
         end = System.currentTimeMillis();
-        return "success" + "执行时间{" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(ms)}";
+        return "success" + "time{" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(ms)}";
     }
 
 
