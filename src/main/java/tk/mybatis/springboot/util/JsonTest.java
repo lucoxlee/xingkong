@@ -1,9 +1,11 @@
 package tk.mybatis.springboot.util;
 
 import cn.hutool.json.JSONUtil;
+import com.google.common.collect.ImmutableList;
 import tk.mybatis.springboot.model.rancher.CreateServiceBean;
 import tk.mybatis.springboot.model.rancher.LaunchConfig;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -33,6 +35,7 @@ public class JsonTest {
         launchconfig.setStartOnCreate(true);
         launchconfig.setStdinOpen(true);
         launchconfig.setTty(true);
+        launchconfig.setPorts(ImmutableList.of("3333:22/tcp","3334:22/tcp"));
         launchconfig.setVcpu(1);
         launchconfig.setDrainTimeoutMs(0);
         launchconfig.setType("launchConfig");

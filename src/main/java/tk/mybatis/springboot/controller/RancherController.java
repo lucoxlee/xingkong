@@ -28,6 +28,7 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
+import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.springboot.model.rancher.CreateServiceBean;
@@ -35,10 +36,7 @@ import tk.mybatis.springboot.model.rancher.LaunchConfig;
 import tk.mybatis.springboot.model.rancher.PublicEndpoints;
 import tk.mybatis.springboot.util.HttpUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author liuzh
@@ -50,11 +48,11 @@ public class RancherController {
 
 
     @RequestMapping(value = "/add")
-    public boolean add() {
+    public boolean add(String containerName,String port) {
         //生成参数
         CreateServiceBean createServiceBean = new CreateServiceBean();
         createServiceBean.setScale(1);
-        createServiceBean.setName("test3");
+        createServiceBean.setName(containerName);
         createServiceBean.setAssignServiceIpAddress(false);
         createServiceBean.setStartOnCreate(true);
         createServiceBean.setType("service");
@@ -81,6 +79,7 @@ public class RancherController {
         restartpolicy.put("name","always");
         launchconfig.setRestartPolicy(restartpolicy);
         launchconfig.setImageUuid("docker:alpine");
+        launchconfig.setPorts(Arrays.asList(port.split(",")));
 
         createServiceBean.setLaunchConfig(launchconfig);
 
@@ -88,7 +87,7 @@ public class RancherController {
         String result = HttpRequest.post("http://106.15.58.63:8080/v2-beta/projects/1a5/services")
                 .header("Accept", "application/json").header("23B52EF320D702860BC5", "FV7FxAx5rnQ32zDCsAeCpoTaQG3YQZqWJiRhQqVS")
                 .body(JSONUtil.toJsonPrettyStr(createServiceBean))
-                .timeout(1000000)
+                .timeout(200000)
                 .execute().body();
         System.out.println(result);
         JSONObject json = new JSONObject(result);
