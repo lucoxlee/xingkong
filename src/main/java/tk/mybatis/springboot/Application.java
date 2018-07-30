@@ -76,6 +76,6 @@ public class Application extends WebMvcConfigurerAdapter implements CommandLineR
 
     @RequestMapping("/")
     String home() {
-        return "redirect:countries";
+        return "redirect:demo";
     }
 }

@@ -11,6 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class PageController {
+
+    @RequestMapping("/demo")
+    public ModelAndView demo() {
+        ModelAndView result = new ModelAndView("demo");
+        return result;
+    }
+
     @RequestMapping("/hello")
     public ModelAndView hello() {
         ModelAndView result = new ModelAndView("hello");
