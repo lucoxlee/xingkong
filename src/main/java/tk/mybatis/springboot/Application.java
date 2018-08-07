@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.hadoop.fs.FsShell;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,7 @@ import java.util.List;
  */
 @Controller
 @EnableWebMvc
+@EnableCaching
 @SpringBootApplication
 @MapperScan(basePackages = "tk.mybatis.springboot.mapper")
 public class Application extends WebMvcConfigurerAdapter implements CommandLineRunner {
