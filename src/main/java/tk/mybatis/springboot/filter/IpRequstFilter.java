@@ -5,6 +5,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.stereotype.Component;
 import tk.mybatis.springboot.service.IRedisService;
 import tk.mybatis.springboot.util.HttpUtil;
+import tk.mybatis.springboot.util.MathUtil;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -52,6 +53,9 @@ public class IpRequstFilter implements Filter {
                 ipRequstNum = 0;
             }
             if (ipRequstNum > 2) {
+                if (MathUtil.getRandomNum(0.5)) {
+                    filterChain.doFilter(servletRequest, servletResponse);
+                }
                 HttpUtil.dealResponse(response, "爬虫你好！");
             } else {
                 ipRequstNum++;
@@ -61,7 +65,6 @@ public class IpRequstFilter implements Filter {
         }
 
     }
-
 
     @Override
     public void destroy() {

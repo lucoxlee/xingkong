@@ -13,9 +13,9 @@
 
     <label id="row2"></label>
     <hr>
-    <a href="/countries" target="_blank"><button type="button" class="btn btn-primary" >爬虫策略</button></a>
-    <label id="row2"></label>
-    <hr>
+    <#--<a href="/countries" target="_blank"><button type="button" class="btn btn-primary" >爬虫策略</button></a>-->
+    <#--<label id="row2"></label>-->
+    <#--<hr>-->
 
 
 </div>

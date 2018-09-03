@@ -2,6 +2,7 @@ package tk.mybatis.springboot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,8 @@ public class IRedisService {
     protected RedisTemplate<String, Object> redisTemplate;
     @Resource
     protected HashOperations<String, String, Object> hashOperations;
-
+    @Autowired
+    private ListOperations<String, Object> opsForList;
     /**
      * 存入redis中的key
      *

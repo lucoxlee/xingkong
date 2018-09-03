@@ -86,7 +86,7 @@ public class HadoopController {
         }
         writer.write(stringBuilder.toString());
         end = System.currentTimeMillis();
-        return "Fileinfo：/root/data.txt   time{" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(ms)}";
+        return "文件路径:/root/data.txt  耗时:" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(毫秒)";
     }
 
     @RequestMapping("copyFile")
@@ -105,7 +105,7 @@ public class HadoopController {
         }
         hdfs.copyFromLocalFile(src, dst);
         end = System.currentTimeMillis();
-        return "Upload to " + conf.get("fs.default.name") + "time{" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(ms)}";
+        return "上传到" + conf.get("fs.default.name") + "耗时:" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(毫秒)";
     }
 
     @RequestMapping("doJob")
@@ -113,12 +113,12 @@ public class HadoopController {
         start = System.currentTimeMillis();
         CityCount.CityCount();
         end = System.currentTimeMillis();
-        return "success" + "time{" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(ms)}";
+        return "耗时:" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(毫秒)";
     }
 
 
     @RequestMapping("cityNumAll")
-    public List<CityNum> cityNumList() throws Exception {
+    public List cityNumList() throws Exception {
         ArrayList<Result> results = (ArrayList<Result>) hbaseService.scaner("cityNum");
         ArrayList<CityNum> arrayList = new ArrayList<>();
         for (int i = 0; i < results.size(); i++) {
@@ -141,7 +141,7 @@ public class HadoopController {
 
 
     @RequestMapping("getRegexRowByKey")
-    public List<CityNum> getRegexRowByKey(String regex) throws Exception {
+    public List getRegexRowByKey(String regex) throws Exception {
         ArrayList<Result> results = (ArrayList<Result>) hbaseService.getRegexRow("cityNum", regex, 100);
         ArrayList<CityNum> arrayList = new ArrayList<>();
         for (int i = 0; i < results.size(); i++) {
@@ -167,7 +167,5 @@ public class HadoopController {
         map.put("output", Client.sentData(JSON.toJSONString(city)));
         return map;
     }
-
-
 
 }
