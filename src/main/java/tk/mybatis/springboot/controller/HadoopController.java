@@ -86,7 +86,7 @@ public class HadoopController {
         }
         writer.write(stringBuilder.toString());
         end = System.currentTimeMillis();
-        return "文件路径:/root/data.txt  耗时:" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(毫秒)";
+        return "File Path:  /root/data.txt \nTime Use:" + "start time:" + start + "; end time:" + end + "; run Time:" + (end - start) + "(ms)";
     }
 
     @RequestMapping("copyFile")
@@ -105,7 +105,7 @@ public class HadoopController {
         }
         hdfs.copyFromLocalFile(src, dst);
         end = System.currentTimeMillis();
-        return "上传到" + conf.get("fs.default.name") + "耗时:" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(毫秒)";
+        return "Upload To" + conf.get("fs.default.name") + "耗时:" + "start time:" + start + "; end time:" + end + "; run Time:" + (end - start) + "(ms)";
     }
 
     @RequestMapping("doJob")
@@ -113,7 +113,7 @@ public class HadoopController {
         start = System.currentTimeMillis();
         CityCount.CityCount();
         end = System.currentTimeMillis();
-        return "耗时:" + "start time:" + start + "; end time:" + end + "; Run Time:" + (end - start) + "(毫秒)";
+        return "Time Use:" + "start time:" + start + "; end time:" + end + "; run Time:" + (end - start) + "(ms)";
     }
 
 
